@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "./useForm";
+import Hello from "./Hello";
 function App() {
+  const [showHello, setShowHello] = useState(true);
   const [values, handleChange] = useForm({
     email: "",
     password: "",
     firstName: ""
   });
-  useEffect(() => {
-    console.log("render");
-  }, [values.email, values.password]);
+  // useEffect(() => {
+  //   console.log("render");
+  //   return () => {
+  //     console.log("unmount");
+  //   };
+  // }, []);
   return (
     <div>
+      <button onClick={() => setShowHello(!showHello)}>Toggle</button>
+      {showHello && <Hello />}
       <form>
         <input
           name="firstName"
