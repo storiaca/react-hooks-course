@@ -14,9 +14,9 @@ function App() {
     };
     window.addEventListener("mousemove", onMouseMove);
     return () => {
-      console.log("unmount");
+      window.removeEventListener("mousemove", onMouseMove);
     };
-  }, [values.email]);
+  }, []);
   return (
     <div>
       {/* <button onClick={() => setShowHello(!showHello)}>Toggle</button>
