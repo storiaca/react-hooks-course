@@ -8,7 +8,7 @@ export const useFetch = url => {
     fetch(url)
       .then(x => x.text())
       .then(y => setState({ data: y, loading: false }));
-  }, [url]);
+  }, [url, setState]);
 
   return state;
 };
