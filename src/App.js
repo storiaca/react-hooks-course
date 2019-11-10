@@ -10,13 +10,16 @@ function App() {
     firstName: ""
   });
 
-  const { data, loading } = useFetch("http://numbersapi.com/43/trivia");
-  //http://numbersapi.com/43/trivia
+  const [count, setCount] = useState(0);
+  const { data, loading } = useFetch(`http://numbersapi.com/${count}/trivia`);
 
   return (
     <div>
       {/* <button onClick={() => setShowHello(!showHello)}>Toggle</button>
       {showHello && <Hello />} */}
+      <div>{!data ? "loading..." : data}</div>
+      <div>Count: {count}</div>
+      <button onClick={() => setCount(c => c + 1)}>increment</button>
       <form>
         <input
           name="firstName"
