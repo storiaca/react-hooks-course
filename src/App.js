@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useForm } from "./useForm";
-//import Hello from "./Hello";
+import Hello from "./Hello";
 import { useFetch } from "./useFetch";
 
 function App() {
@@ -17,14 +17,16 @@ function App() {
 
   const inputRef = useRef(null);
 
+  const [showHello, setShowHello] = useState(true);
+
   useEffect(() => {
     localStorage.setItem("count", JSON.stringify(count));
   }, [count]);
 
   return (
     <div>
-      {/* <button onClick={() => setShowHello(!showHello)}>Toggle</button>
-      {showHello && <Hello />} */}
+      <button onClick={() => setShowHello(!showHello)}>Toggle</button>
+      {showHello && <Hello />}
       <div>{!data ? "loading..." : data}</div>
       <div>Count: {count}</div>
       <button onClick={() => setCount(c => c + 1)}>increment</button>
